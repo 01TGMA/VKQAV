@@ -21,6 +21,7 @@ function ServiceRow({ service, index }) {
           <PlaceholderImage
             icon={service.icon}
             label={service.imageLabel}
+            src={service.image}
             tone={service.tone}
             ratio="aspect-[16/10]"
           />
