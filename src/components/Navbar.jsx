@@ -67,7 +67,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 shadow-sm">
       <UtilityBar />
       <div className="border-b border-slate-100 bg-white">
-        <div className="container-x flex h-16 items-center justify-between">
+        <div className="container-x flex h-16 items-center justify-between lg:h-20">
           <Logo />
 
           {/* Desktop nav */}

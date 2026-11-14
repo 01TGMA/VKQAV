@@ -12,12 +12,12 @@ export default function Logo({ light = false, className = 'h-25 sm:h-11' }) {
   return (
     <Link to="/" className="inline-flex items-center" aria-label={`${SITE.fullName} home`}>
       <img
-        src={src}
-        width={780}
-        height={270}
-        alt={`${SITE.fullName} logo`}
-        className={`${className} w-auto`}
-      />
+  src={src}
+  width={640}
+  height={178}
+  alt={`${SITE.fullName} logo`}
+  className="h-9 w-auto max-w-[190px] object-contain sm:h-11 sm:max-w-none"
+/>
     </Link>
   )
 }
