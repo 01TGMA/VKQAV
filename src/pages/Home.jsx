@@ -61,7 +61,7 @@ function QuickRequest() {
         <input
           type="tel"
           autoComplete="tel"
-          placeholder="+234"
+          placeholder="+234 816 456 8680"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           className={`${fieldClass} mt-1.5`}
