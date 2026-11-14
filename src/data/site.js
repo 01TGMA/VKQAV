@@ -3,13 +3,13 @@ export const SITE = {
   fullName: 'VKQAV Expert Essential Service Ltd',
   tagline: 'Care Expert Support',
   motto: 'Providing value for whatever you pay for.',
-  phone: '+234 000 000 0000',
-  phoneHref: 'tel:+2340000000000',
+  phone: '+234 816 456 8680',
+  phoneHref: 'tel:+2348164568680',
   email: 'info@vkqav.com',
   address: '22 Chris Alli Crescent, Ikoyi, Lagos',
   hours: 'Open 24 hours',
   whatsapp:
-    'https://wa.me/2340000000000?text=Hello%20VKQAV,%20I%20would%20like%20to%20inquire%20about%20your%20services.',
+    'https://wa.me/2348164568680?text=Hello%20VKQAV,%20I%20would%20like%20to%20inquire%20about%20your%20services.',
 }
 
 export const SERVICE_LINKS = [
