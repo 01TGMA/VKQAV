@@ -6,7 +6,7 @@ export const SITE = {
   phone: '+234 000 000 0000',
   phoneHref: 'tel:+2340000000000',
   email: 'info@vkqav.com',
-  address: '22 Chris Ali Crescent, Ikoyi, Lagos',
+  address: '22 Chris Alli Crescent, Ikoyi, Lagos',
   hours: 'Open 24 hours',
   whatsapp:
     'https://wa.me/2340000000000?text=Hello%20VKQAV,%20I%20would%20like%20to%20inquire%20about%20your%20services.',
