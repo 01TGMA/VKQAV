@@ -150,7 +150,7 @@ export default function Home() {
       </section>
 
       {/* 5. Testimonials */}
-      {HOME_TESTIMONIALS.length > 0 && (
+      {/* {HOME_TESTIMONIALS.length > 0 && (
         <section className="bg-white py-16 lg:py-24">
           <div className="container-x">
             <div className="mx-auto max-w-2xl text-center">
@@ -182,7 +182,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-      )}
+      )} */}
 
       {/* 6. One company, one contact */}
       <section className="bg-mint py-16 lg:py-20">

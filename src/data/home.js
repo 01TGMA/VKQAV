@@ -43,8 +43,8 @@ export const STANDARD = [
  * Replace with real client reviews, then delete `sample: true`.
  * Samples show a "Sample, replace" badge on the page. Do not publish invented reviews as real ones.
  */
-export const HOME_TESTIMONIALS = [
-  { sample: true, quote: 'A short quote from a Lagos homeowner about the care or household service they received.', name: 'Client name', role: 'Lagos homeowner' },
-  { sample: true, quote: 'A short quote from a school administrator about maintenance or cleaning work at their school.', name: 'Client name', role: 'School administrator' },
-  { sample: true, quote: 'A short quote from a construction manager about materials supply or after-construction cleaning.', name: 'Client name', role: 'Construction manager' },
-]
+// export const HOME_TESTIMONIALS = [
+//   { sample: true, quote: 'A short quote from a Lagos homeowner about the care or household service they received.', name: 'Client name', role: 'Lagos homeowner' },
+//   { sample: true, quote: 'A short quote from a school administrator about maintenance or cleaning work at their school.', name: 'Client name', role: 'School administrator' },
+//   { sample: true, quote: 'A short quote from a construction manager about materials supply or after-construction cleaning.', name: 'Client name', role: 'Construction manager' },
+// ]
