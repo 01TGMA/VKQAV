@@ -1,179 +1,193 @@
 import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { ArrowRight, Mail, MessageCircle, Phone } from 'lucide-react'
+import { ArrowRight, Mail, MessageCircle, Phone, Star } from 'lucide-react'
+import HeroSlider from '../components/HeroSlider'
+import DivisionShowcase from '../components/DivisionShowcase'
 import CtaBanner from '../components/CtaBanner'
-import TrustGrid from '../components/TrustGrid'
-import { HOME_HERO_IMAGES } from '../data/pages'
+import { HERO_SLIDES, HOME_TESTIMONIALS, INDUSTRIES, STANDARD } from '../data/home'
 import { DIVISIONS, servicesIn } from '../data/serviceDetails'
 import { SITE } from '../data/site'
 
 export default function Home() {
   const { hash } = useLocation()
+  const total = DIVISIONS.reduce((n, d) => n + servicesIn(d.id).length, 0)
+
+  const stats = [
+    [String(total), 'Specialised services'],
+    ['Vetted', '& verified staff'],
+    ['Residential', '& corporate clients'],
+    ['24/7', 'Lagos support'],
+  ]
 
   useEffect(() => {
-    document.title = `${SITE.fullName} | Reliable services for every need`
+    document.title = `${SITE.fullName} | Providing value for whatever you pay for`
   }, [])
 
-  // Support links like /#why-choose-us or /#services from other pages.
+  // Support links such as /#why-choose-us or /#division-facility from anywhere on the site.
   useEffect(() => {
-    if (hash) {
-      document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    } else {
+    if (!hash) {
       window.scrollTo({ top: 0 })
+      return
     }
+    const id = hash.startsWith('#division-') ? 'services' : hash.slice(1)
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }, [hash])
-
-  const total = DIVISIONS.reduce((n, d) => n + servicesIn(d.id).length, 0)
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-brand-900 via-brand to-[#1D5A4A]">
-        <div className="container-x grid items-center gap-10 py-12 pb-24 lg:grid-cols-[1fr_520px] lg:gap-14 lg:py-14 lg:pb-28">
-          <div>
-            <p className="eyebrow text-accent">
-              {SITE.name} &middot; {SITE.tagline}
-            </p>
-            <h1 className="mt-5 max-w-xl text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl lg:text-[3.4rem]">
-              One company.
-              <br />
-              Every service you need.
+      {/* 1. Hero */}
+      <HeroSlider slides={HERO_SLIDES}>
+        <div className="container-x pb-8 pt-14 sm:pt-20 lg:pt-24">
+          <div className="max-w-2xl">
+            <span className="inline-block rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-accent backdrop-blur-sm">
+              {SITE.fullName}
+            </span>
+            <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl lg:text-6xl">
+              Providing value for whatever you pay for.
             </h1>
-            <p className="mt-5 max-w-lg text-base leading-relaxed text-white/75 sm:text-lg">
-              {total} dependable services in four divisions, from home care and catering to facility management
-              and real estate. Find yours below.
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
+              From vetted domestic caregivers and catering to institutional facility management, procurement, real
+              estate and logistics across Lagos.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#services" className="btn-accent px-6 py-3">
-                Find a service
-              </a>
-              <Link to="/quote" className="btn border border-white/60 px-6 py-3 text-white hover:bg-white hover:text-brand">
-                Get a free quote
+              <Link to="/quote" className="btn-accent px-7 py-3.5 text-base">
+                Book a service
               </Link>
+              <a
+                href="#services"
+                className="btn border border-white/50 bg-white/10 px-7 py-3.5 text-base text-white backdrop-blur-sm hover:bg-white hover:text-brand"
+              >
+                Explore services
+              </a>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3.5">
-            <img
-              src={HOME_HERO_IMAGES[0].src}
-              alt={HOME_HERO_IMAGES[0].alt}
-              width="678"
-              height="452"
-              className="col-span-2 aspect-[16/8] w-full rounded-2xl object-cover shadow-xl"
-            />
-            {HOME_HERO_IMAGES.slice(1).map((img) => (
-              <img
-                key={img.src}
-                src={img.src}
-                alt={img.alt}
-                loading="lazy"
-                className="aspect-[4/3] w-full rounded-2xl object-cover shadow-xl"
-              />
+          <ul className="mt-12 grid gap-3 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+            {stats.map(([value, label]) => (
+              <li
+                key={label}
+                className="rounded-2xl border border-white/20 bg-white/10 px-5 py-4 backdrop-blur-md"
+              >
+                <p className="text-2xl font-extrabold text-white">{value}</p>
+                <p className="mt-0.5 text-sm text-white/75">{label}</p>
+              </li>
             ))}
+          </ul>
+        </div>
+      </HeroSlider>
+
+      {/* 2. Tabbed divisions and all 14 services */}
+      <DivisionShowcase />
+
+      {/* 3. Who we serve */}
+      <section id="who-we-serve" className="scroll-mt-24 bg-mint py-16 lg:py-24">
+        <div className="container-x">
+          <div className="flex flex-col justify-between gap-3 md:flex-row md:items-end">
+            <div>
+              <p className="eyebrow">Who we serve</p>
+              <h2 className="mt-4 text-3xl font-extrabold sm:text-4xl">Homes and institutions across Lagos.</h2>
+            </div>
+            <p className="max-w-sm text-base text-slate-600">
+              From a single household to a hospital or a bank branch, the standard stays the same.
+            </p>
           </div>
+          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {INDUSTRIES.map(({ icon: Icon, title, text, division }) => (
+              <li key={title}>
+                <Link
+                  to={`/#division-${division}`}
+                  className="group flex h-full items-center gap-5 rounded-2xl border border-slate-200 bg-white p-6 transition hover:border-brand-700/50 hover:shadow-md"
+                >
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-mint text-brand-700 transition group-hover:bg-brand group-hover:text-white">
+                    <Icon className="h-6 w-6" />
+                  </span>
+                  <span>
+                    <span className="block text-base font-bold text-brand">{title}</span>
+                    <span className="mt-0.5 block text-sm text-slate-600">{text}</span>
+                    <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 group-hover:gap-2.5">
+                      See services <ArrowRight className="h-3.5 w-3.5 transition-all" />
+                    </span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      {/* Division jump bar, overlapping the hero */}
-      <div className="container-x relative z-10 -mt-14">
-        <nav
-          aria-label="Service divisions"
-          className="grid overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-xl shadow-brand-900/15 sm:grid-cols-2 lg:grid-cols-4"
-        >
-          {DIVISIONS.map((d) => (
-            <a
-              key={d.id}
-              href={`#division-${d.id}`}
-              className="group border-b border-slate-100 px-6 py-5 transition hover:bg-mint sm:odd:border-r lg:border-b-0 lg:border-r lg:last:border-r-0"
-            >
-              <p className="text-[11px] font-bold tracking-[0.18em] text-brand-700">{d.no}</p>
-              <p className="mt-1.5 text-base font-bold leading-snug text-brand">{d.title}</p>
-              <p className="mt-2.5 inline-flex items-center gap-1.5 text-xs text-slate-500 group-hover:text-brand-700">
-                {servicesIn(d.id).length} services <ArrowRight className="h-3.5 w-3.5 text-accent" />
-              </p>
-            </a>
-          ))}
-        </nav>
-      </div>
-
-      {/* Every service, by division */}
-      <div id="services" className="mt-14 scroll-mt-28">
-        {DIVISIONS.map((d, i) => {
-          const items = servicesIn(d.id)
-          return (
-            <section
-              key={d.id}
-              id={`division-${d.id}`}
-              className={`scroll-mt-24 py-14 lg:py-20 ${i % 2 ? 'bg-mint' : 'bg-white'}`}
-            >
-              <div className="container-x grid items-start gap-10 lg:grid-cols-[380px_1fr] lg:gap-14">
-                <div>
-                  <img
-                    src={d.image}
-                    alt={d.alt}
-                    loading="lazy"
-                    className="aspect-[16/10] w-full rounded-2xl object-cover"
-                  />
-                  <p className="mt-6 text-[11px] font-bold tracking-[0.18em] text-brand-700">DIVISION {d.no}</p>
-                  <h2 className="mt-2 text-3xl font-extrabold leading-tight">{d.title}</h2>
-                  <p className="mt-3 text-base text-slate-600">{d.description}</p>
-                  <Link to={d.to} className="btn-dark mt-6 px-6 py-3">
-                    View {d.short} division <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-
-                <ul className="grid gap-4 sm:grid-cols-2">
-                  {items.map((s) => {
-                    const Icon = s.icon
-                    return (
-                      <li key={s.slug}>
-                        <Link
-                          to={`/services/${s.slug}`}
-                          className="group flex h-full gap-4 rounded-xl border border-slate-200 bg-white p-6 transition hover:border-brand-700/50 hover:shadow-md"
-                        >
-                          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-mint text-brand-700">
-                            <Icon className="h-5 w-5" />
-                          </span>
-                          <div>
-                            <h3 className="text-base font-bold leading-snug">{s.title}</h3>
-                            <p className="mt-1 text-sm leading-relaxed text-slate-600">{s.tagline}</p>
-                            <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-brand-700 group-hover:gap-2.5">
-                              View service <ArrowRight className="h-4 w-4 transition-all" />
-                            </span>
-                          </div>
-                        </Link>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </div>
-            </section>
-          )
-        })}
-      </div>
-
-      {/* Why VKQAV */}
-      <section id="why-choose-us" className="scroll-mt-28 bg-brand-900 py-14 text-white lg:py-20">
-        <div className="container-x grid items-start gap-10 lg:grid-cols-[420px_1fr] lg:gap-16">
+      {/* 4. The VKQAV standard */}
+      <section id="why-choose-us" className="scroll-mt-24 bg-brand-900 py-16 text-white lg:py-24">
+        <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
-            <p className="eyebrow text-accent">Why VKQAV</p>
+            <p className="eyebrow text-accent">The VKQAV standard</p>
             <h2 className="mt-4 text-3xl font-extrabold leading-tight text-white sm:text-4xl">
-              The people you trust with your home should be vetted.
+              Every service backed by integrity, speed and accountability.
             </h2>
             <p className="mt-5 text-base leading-relaxed text-white/70">
-              Whether it is a nanny for your family or a maintenance crew for your school, we put the same care
-              into who we send and how the work is done.
+              We serve everyone, young and old, corporate and residential. Whether it is a nanny for your family
+              or a maintenance crew for your school, we put the same care into who we send and how the work is
+              done.
             </p>
-            <Link to="/about" className="btn-accent mt-7 px-6 py-3">
+            <Link to="/about" className="btn-accent mt-8 px-6 py-3">
               About VKQAV
             </Link>
           </div>
-          <TrustGrid />
+          <ul className="space-y-4">
+            {STANDARD.map(({ icon: Icon, title, text }) => (
+              <li
+                key={title}
+                className="flex gap-5 rounded-2xl border border-white/15 bg-white/5 p-6"
+              >
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent text-brand-900">
+                  <Icon className="h-6 w-6" />
+                </span>
+                <div>
+                  <h3 className="text-lg font-bold text-white">{title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-white/70">{text}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      {/* One company, one contact */}
-      <section className="bg-white py-14 lg:py-20">
+      {/* 5. Testimonials */}
+      {HOME_TESTIMONIALS.length > 0 && (
+        <section className="bg-white py-16 lg:py-24">
+          <div className="container-x">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="eyebrow justify-center">Client reviews</p>
+              <h2 className="mt-4 text-3xl font-extrabold sm:text-4xl">What our clients say</h2>
+            </div>
+            <div className="mt-10 grid gap-6 md:grid-cols-3">
+              {HOME_TESTIMONIALS.map((t, i) => (
+                <figure key={i} className="relative flex flex-col rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
+                  {t.sample && (
+                    <span className="absolute right-4 top-4 rounded bg-amber-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-800">
+                      Sample, replace
+                    </span>
+                  )}
+                  <div className="flex gap-0.5 text-accent" role="img" aria-label="5 out of 5 stars">
+                    {[0, 1, 2, 3, 4].map((n) => (
+                      <Star key={n} className="h-4 w-4 fill-current" />
+                    ))}
+                  </div>
+                  <blockquote className="mt-4 flex-1 text-base leading-relaxed text-slate-700">
+                    &ldquo;{t.quote}&rdquo;
+                  </blockquote>
+                  <figcaption className="mt-6 border-t border-slate-100 pt-4 text-sm text-slate-500">
+                    <span className="block font-bold text-brand">{t.name}</span>
+                    {t.role}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 6. One company, one contact */}
+      <section className="bg-mint py-16 lg:py-20">
         <div className="container-x grid items-center gap-10 lg:grid-cols-[1fr_400px] lg:gap-16">
           <div>
             <p className="eyebrow">One company, one contact</p>
@@ -195,7 +209,7 @@ export default function Home() {
                 <a
                   href={href}
                   {...(href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                  className="flex items-center gap-4 rounded-xl border border-slate-200 bg-mint px-5 py-4 transition hover:border-brand-700/50"
+                  className="flex items-center gap-4 rounded-xl border border-slate-200 bg-white px-5 py-4 transition hover:border-brand-700/50"
                 >
                   <I className="h-5 w-5 text-brand-700" />
                   <span>
@@ -209,6 +223,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 7. CTA banner */}
       <CtaBanner />
     </>
   )

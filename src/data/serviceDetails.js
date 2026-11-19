@@ -37,6 +37,9 @@ import {
 export const DIVISIONS = [
   {
     id: 'domestic',
+    overview: 'Caregivers, nannies and household staff who make home life easier for busy families and the people they look after.',
+    highlights: ['Vetted caregivers, nannies and domestic helps', 'Hourly, daily or live-in arrangements', 'Errands and market shopping done for you'],
+    quoteOptions: ['Domestic & Family Care'],
     no: '01',
     title: 'Domestic & Family Care',
     short: 'Domestic',
@@ -47,6 +50,9 @@ export const DIVISIONS = [
   },
   {
     id: 'facility',
+    overview: 'Upkeep, pest control and cleaning for schools, hospitals, hotels, churches, banks and other commercial buildings.',
+    highlights: ['Routine maintenance and repairs', 'Supervised, trained crews', 'One-off jobs or ongoing contracts'],
+    quoteOptions: ['Facility Management'],
     no: '02',
     title: 'Facility & Maintenance',
     short: 'Facility',
@@ -57,6 +63,9 @@ export const DIVISIONS = [
   },
   {
     id: 'procurement',
+    overview: 'Catering for events and offices, plus sourcing and delivery of building materials and everyday supplies.',
+    highlights: ['Menus planned with you', 'Materials sourced and sent to site', 'Clear receipts and records'],
+    quoteOptions: ['Catering', 'Procurement'],
     no: '03',
     title: 'Procurement & Catering',
     short: 'Procurement',
@@ -67,6 +76,9 @@ export const DIVISIONS = [
   },
   {
     id: 'realestate',
+    overview: 'Buy, sell or rent property with clear guidance, and move goods across the city safely and on time.',
+    highlights: ['Residential and commercial property', 'Viewings and negotiation support', 'Same-city goods delivery'],
+    quoteOptions: ['Real Estate', 'Logistics & Delivery'],
     no: '04',
     title: 'Real Estate & Logistics',
     short: 'Real Estate',
