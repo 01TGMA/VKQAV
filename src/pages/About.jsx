@@ -36,7 +36,7 @@ export default function About() {
               Our motto guides every job: we provide value for whatever you are paying for.
             </p>
             <Link to="/quote" className="btn-dark mt-7 px-6 py-3">
-              Get a free quote
+              Get a  quote
             </Link>
           </div>
         </div>

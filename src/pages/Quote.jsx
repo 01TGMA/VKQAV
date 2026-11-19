@@ -42,7 +42,7 @@ export default function Quote() {
   const [submitted, setSubmitted] = useState(false)
 
   useEffect(() => {
-    document.title = `Request a Free Quote | ${SITE.fullName}`
+    document.title = `Request a  Quote | ${SITE.fullName}`
     window.scrollTo({ top: 0 })
   }, [])
 
@@ -95,7 +95,7 @@ export default function Quote() {
 
   return (
     <>
-      <PageBanner title="Request a free quote" crumbs={['Contact Us']} icon={FileText} />
+      <PageBanner title="Request a  quote" crumbs={['Contact Us']} icon={FileText} />
 
       <section className="py-12 lg:py-16">
         <div className="container-x grid items-start gap-10 lg:grid-cols-[1fr_400px] lg:gap-12">

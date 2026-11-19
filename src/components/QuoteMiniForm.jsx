@@ -99,7 +99,7 @@ export default function QuoteMiniForm({ serviceName }) {
             </div>
 
             <button type="submit" className="btn-dark w-full">
-              Get a free quote
+              Get a  quote
             </button>
             <a
               href={SITE.whatsapp}

@@ -10,7 +10,7 @@ export default function CtaBanner() {
         </h2>
         <div className="flex flex-wrap gap-3">
           <Link to="/quote" className="btn-dark">
-            Get a Free Quote
+            Get a  Quote
           </Link>
           <a
             href={SITE.phoneHref}

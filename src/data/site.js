@@ -31,7 +31,7 @@ export const FOOTER_COMPANY = [
   { label: 'About Us', to: '/about' },
   { label: 'Why Choose Us', to: '/#why-choose-us' },
   { label: 'Contact Us', to: '/contact' },
-  { label: 'Get a Free Quote', to: '/quote' },
+  { label: 'Get a  Quote', to: '/quote' },
 ]
 
 export const HOW_IT_WORKS = [

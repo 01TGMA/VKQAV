@@ -124,7 +124,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-3">
             <Link to="/quote" className="btn-accent hidden sm:inline-flex">
-              Get a Free Quote
+              Get a  Quote
             </Link>
             <button
               type="button"
@@ -207,7 +207,7 @@ export default function Navbar() {
           </nav>
           <div className="border-t border-slate-100 p-4">
             <Link to="/quote" className="btn-accent w-full">
-              Get a Free Quote
+              Get a  Quote
             </Link>
           </div>
         </aside>
