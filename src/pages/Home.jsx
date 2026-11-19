@@ -39,9 +39,7 @@ export default function Home() {
       <HeroSlider slides={HERO_SLIDES}>
         <div className="container-x pb-8 pt-14 sm:pt-20 lg:pt-24">
           <div className="max-w-2xl">
-            <span className="inline-block rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-accent backdrop-blur-sm">
-              {SITE.fullName}
-            </span>
+            
             <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl lg:text-6xl">
               Providing value for whatever you pay for.
             </h1>
